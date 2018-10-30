@@ -94,3 +94,4 @@ return msg;
 *	Revise el servicio de la base de datos en el ‘dashboard’ de IBM Cloud https://console.bluemix.net/dashboard/apps/
 Luego de escoger el servicio de Cloudant, se abre una ventana como la que sigue. Entra a la interfaz por el botón ‘Launch’.
 
+> Puedes encontrar los flujos para importar en los archivos [Flujo 1](watson-news-db.json) y [Flujo 2](watson-news-db.json)

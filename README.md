@@ -44,7 +44,10 @@ Hay dos tipos de nodos, los que tienen una conexión y los que tienen dos conexi
 * En la opción **Payload** selecciona _String_ y le asignas `Hello world`.
 * Añade un nodo de salida ‘debug’. Este nodo escribirá en la consola lo que llegue a él.
 * Conecta los nodos entre sí.
-* Prueba el flujo creado. Para esto se debe desplegar el flujo con el botón en la parte superior derecha _Deploy_.
+
+![](img/flow_hello_world.png)
+
+* Prueba el flujo creado. Para esto se debe desplegar el flujo con el botón en la parte superior derecha **Deploy**.
 
 > Al lado de los nodos se encuentran botones para usarlos. El botón del nodo ‘debug’ abre/cierra el puerto en el que escucha la consola. Por otro lado, el botón en ‘inject’ envía lo que tenga predeterminado enviar. 
 
@@ -54,7 +57,7 @@ Hay dos tipos de nodos, los que tienen una conexión y los que tienen dos conexi
 
 Por medio del siguiente flujo se pueden recibir las noticias que se escriban en tiempo real de alguna fuente que utilice RSS.
 
-* Ingresa un nodo de **feedparse** al workspace. Este se encuentra en la pestaña _Advanced_. 
+* Ingresa un nodo de **feedparse** al workspace. Este se encuentra en la categoria _Advanced_. 
 *	Luego hay que configurar la URL del RSS en el nodo. Busca el RSS que desees en un buscador, por ejemplo https://www.eltiempo.com/rss/opinion.xml es el feed de El Tiempo la seccion de opinion
 *	Conecta a un nodo de debug, despliega el servicio y ve a la consola debug para ver las noticias del feed. Configura el debug para ver el objecto **msg** completo.
 
@@ -77,6 +80,8 @@ return msg;
 *	Arrastre el nodo de **Debug** y configurelo para ver el objeto `msg.features`
 *	Despliega el servicio y comprueba su funcionamiento
 
+![](img/flow_rss_nlu.png)
+
 ### 6. Almacenamiento de noticas en Cloudant NoSQL DB
 
 Al principio en la creación del servicio de Node-RED se agregó automaticamente una instancia de Cloudant NoSQL DB. Esta se va a utilizar para almacenar las noticias y el procesamiento de lenguaje natural.
@@ -90,7 +95,13 @@ return msg;
 
 *	Agrega el nodo de Cloudant NoSQL DB. Asegúrese de utilizar el nodo que tenga una sola entrada, ya que solo se desea almacenar.
 *	Configura el servicio haciendo doble clic sobre el nodo. En el campo _Service_ se escoge la instancia de Cloudant, en la cual está el servicio de la base de datos. En _Database_ debes indicar el nombre del fichero o esquema que va a guardar los datos deseados. _Operation_ designa la función que se realiza en el proceso, en este caso insertar. Selecciona la opción `Only store msg.payload object`
+
+![](img/config_cloudant_node.png)
+
 *	Para finalizar, conecta la salida de la función a la entrada de la base de datos. Luego despliega el flujo para empezar a almacenar los datos.
+
+![](img/flow_guardar_db.png)
+
 *	Revise el servicio de la base de datos en el ‘dashboard’ de IBM Cloud https://console.bluemix.net/dashboard/apps/
 Luego de escoger el servicio de Cloudant, se abre una ventana como la que sigue. Entra a la interfaz por el botón ‘Launch’.
 * Allí puede visualizar los datos recogidos hasta el momento.
@@ -125,6 +136,12 @@ Sentimiento {{sentiment.document.label}} ({{sentiment.document.score}}) <br>
 {{/payload}}
 ```
 * Finalmente crea un nodo **http response** y une el flujo de esta manera.
+
+![](img/flow_desplegar_desde_db.png)
+
 * Despliegue la aplicación. Para esto seleccione en la lista desplegable la opción para desplegar solo los flujos modificados
+
+![](img/deploy_modified_flows.png)
+
 *  La página web la encontrará en: 
-_http://<nombre-de-la-aplicacion>.mybluemyx.net/<URL>_
+_http://\<nombre-de-la-aplicacion\>.mybluemix.net/rss

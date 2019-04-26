@@ -89,9 +89,42 @@ return msg;
 ```
 
 *	Agrega el nodo de Cloudant NoSQL DB. Asegúrese de utilizar el nodo que tenga una sola entrada, ya que solo se desea almacenar.
-*	Configura el servicio haciendo doble clic sobre el nodo. En el campo _Service_ se escoge la instancia de Cloudant, en la cual está el servicio de la base de datos. En _Database_ se indica el nombre del fichero o esquema que va a guardar los datos deseados. _Operation_ designa la función que se realiza en el proceso, en este caso insertar. Selecciona la opción `Only store msg.payload object`
+*	Configura el servicio haciendo doble clic sobre el nodo. En el campo _Service_ se escoge la instancia de Cloudant, en la cual está el servicio de la base de datos. En _Database_ debes indicar el nombre del fichero o esquema que va a guardar los datos deseados. _Operation_ designa la función que se realiza en el proceso, en este caso insertar. Selecciona la opción `Only store msg.payload object`
 *	Para finalizar, conecta la salida de la función a la entrada de la base de datos. Luego despliega el flujo para empezar a almacenar los datos.
 *	Revise el servicio de la base de datos en el ‘dashboard’ de IBM Cloud https://console.bluemix.net/dashboard/apps/
 Luego de escoger el servicio de Cloudant, se abre una ventana como la que sigue. Entra a la interfaz por el botón ‘Launch’.
+* Allí puede visualizar los datos recogidos hasta el momento.
 
 > Puedes encontrar los flujos para importar en los archivos [Flujo 1](watson-news-db.json) y [Flujo 2](watson-news-db.json)
+
+### 7. Desplegar datos desde la DB
+
+En esta sección se traerán los datos almacenados en la base de datos anteriormente. Después se utilizarán en una aplicación web
+
+* Cree un nuevo flujo haciendo click en el simbolo de **+** en la parte superior derecha del panel de trabajo
+* Agrega un nodo de http de entrada. Configure con método GET y URL /rss.
+* Añade un nodo Cloudant de dos conexiones (Entrada y Salida). Al igual que el anterior servicio de Cloudant utilizado se debe seleccionar el servicio al cual va a estar ligado ese nodo, el nombre de la instancia y el tipo de búsqueda en la ventana de configuración. El tipo de búsqueda es: `all documents`.
+* Ahora, busca un nodo _template_ y créelo. 
+Por medio de *mustache* este nodo construye el contenido de la página. *Mustache* es una sintaxis de plantilla sin código. Para más información consulta en: http://mustache.github.io/mustache.5.html
+* Haga doble clic en _template_ y pegue el siguiente código:	
+
+```
+<b>Captura de Noticias:</b><br><br>
+{{#payload}} 
+La noticia en {{retrieved_url}}<br> 
+Conceptos:<br>
+{{#concepts}} 
++ {{text}} ({{relevance}})<br>
+{{/concepts}} 
+Entidades:<br>
+{{#entities}} 
++ {{text}} - {{type}} ({{relevance}})<br>
+{{/entities}}
+Sentimiento {{sentiment.document.label}} ({{sentiment.document.score}}) <br>
+<br>
+{{/payload}}
+```
+* Finalmente crea un nodo **http response** y une el flujo de esta manera.
+* Despliegue la aplicación. Para esto seleccione en la lista desplegable la opción para desplegar solo los flujos modificados
+*  La página web la encontrará en: 
+_http://<nombre-de-la-aplicacion>.mybluemyx.net/<URL>_

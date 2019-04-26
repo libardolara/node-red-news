@@ -102,7 +102,7 @@ return msg;
 
 ![](img/flow_guardar_db.png)
 
-*	Revise el servicio de la base de datos en el ‘dashboard’ de IBM Cloud https://console.bluemix.net/dashboard/apps/
+*	Revise el servicio de la base de datos en el ‘dashboard’ de IBM Cloud https://cloud.ibm.com/resources
 Luego de escoger el servicio de Cloudant, se abre una ventana como la que sigue. Entra a la interfaz por el botón ‘Launch’.
 * Allí puede visualizar los datos recogidos hasta el momento.
 
@@ -144,4 +144,4 @@ Sentimiento {{sentiment.document.label}} ({{sentiment.document.score}}) <br>
 ![](img/deploy_modified_flows.png)
 
 *  La página web la encontrará en: 
-_http://\<nombre-de-la-aplicacion\>.mybluemix.net/rss
+_http://\<nombre-de-la-aplicacion\>.mybluemix.net/rss_

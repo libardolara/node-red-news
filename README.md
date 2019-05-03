@@ -153,7 +153,9 @@ Node-RED permite añadir complementos o librerias adicionales a las que trae por
 * Abre el menú y luego accede a **manage palette**. Desde allí se puede ver que complementos tiene y se instalan nuevos complementos.
 * En la pestaña **nodes** se listan los paquetes que actualmente contiene el servicio. En la pestaña **install** puedes buscar el complemento deseado. En este caso busca e instala el que se muestra en la imagen inferior. Para instalar utilice el botón inferior.
 * Instala las siguientes librerías:
+
 a. node-red-dashboard
+
 b. node-red-node-base64
 
 ### 9. Hazlo tú mismo

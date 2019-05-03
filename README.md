@@ -145,3 +145,33 @@ Sentimiento {{sentiment.document.label}} ({{sentiment.document.score}}) <br>
 
 *  La página web la encontrará en: 
 _http://\<nombre-de-la-aplicacion\>.mybluemix.net/rss_
+
+### 8. Añadir complementos a Node-RED
+
+Node-RED permite añadir complementos o librerias adicionales a las que trae por defecto. Para agregarlas se debe conocer el nombre de la librería y estar disponible para integración.
+
+* Abre el menú y luego accede a **manage palette**. Desde allí se puede ver que complementos tiene y se instalan nuevos complementos.
+* En la pestaña **nodes** se listan los paquetes que actualmente contiene el servicio. En la pestaña **install** puedes buscar el complemento deseado. En este caso busca e instala el que se muestra en la imagen inferior. Para instalar utilice el botón inferior.
+* Instala las siguientes librerías:
+a. node-red-dashboard
+b. node-red-node-base64
+
+### 9. Hazlo tú mismo
+
+Prueba tu conocimiento y habilidad haciendo la siguiente aplicación: captura fotos desde la imagen de tu computador, reconoce la edad y el género del rostro detectado y visualiza el resultado en una página web (dashboard).
+
+![](img/hazlo_tu_mismo.png)
+
+#### Pistas
+
+*	Debes utilizar el servicio [Watson Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition) (No olvides crearlo y obtener sus credenciales)
+*	De las librerías instaladas en el numeral 8, vas a necesitar 1 nodo de cada una.
+*	El nodo **camera** entrega la imagen en un buffer, necesitas pasarla por un nodo que lo codifique y se pueda visualizar como una imagen
+*	El nodo **template** tiene este código para visualizar la imagen codificada.
+
+```
+<img width="64" height="300" alt="Responsive image" src="data:image/jpg;base64,{{msg.payload}}"/>
+```
+
+* El nodo **Visual Recognition** entrega los resultados del análisis en _msg.result_. Puedes buscar más información en la pestaña **info** o en la documentación del servicio.
+*	Utiliza el nodo debug para hacer pruebas de código js.

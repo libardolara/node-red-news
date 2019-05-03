@@ -7,7 +7,7 @@ En IBM Cloud es muy sencillo crear un ambiente Node-RED que pueda acceder a los 
 ## Componentes Incluidos
 
 * [Node-RED](https://nodered.org/): Es un framework Open Source que permite construir aplicaciones basdas en flujos y eventos.
-* [Cloudant](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db): Una base de datos completamente manejada diseñada para aplicaciones web y mobile modernas que usan documentos como JSON.
+* [Cloudant](https://cloud.ibm.com/catalog/services/cloudant): Una base de datos completamente manejada diseñada para aplicaciones web y mobile modernas que usan documentos como JSON.
 * [Watson Natural Language Understanding](https://www.ibm.com/watson/developercloud/natural-language-understanding/api/): Usa procesamiento de lenguaje natural para extraer caracteristicas semanticas de cualquier texto.
 
 ## Tecnologías Importantes
@@ -18,7 +18,7 @@ En IBM Cloud es muy sencillo crear un ambiente Node-RED que pueda acceder a los 
 
 ### 1. Crear el servicio Node-RED
 
-En el catalogo de IBM Cloud, crea el servicio de [Node-RED](https://console.bluemix.net/catalog/starters/node-red-starter)
+En el catalogo de IBM Cloud, crea el servicio de [Node-RED](https://cloud.ibm.com/catalog/starters/node-red-starter)
 * Dale un nombre único a la aplicación, este nombre será usado para crear un subdominio web.
 * Haz click en _Crear_
 * Espera a que la aplicación inicialice
@@ -74,7 +74,7 @@ return msg;
 ```
 
 *	Agregue un nodo ‘Natural Laguage Understanding” al flujo. Este nodo es un API de Watson que realiza procesamiento de lenguage natural
-*	En otra pestaña del explorador, entre a IBM Cloud > Catalogo > AI y crea un servicio [Natural Language Understanding](https://console.bluemix.net/catalog/services/natural-language-understanding)
+*	En otra pestaña del explorador, entre a IBM Cloud > Catalogo > AI y crea un servicio [Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding)
 *	Cuando se cree el servicio copie las credenciales del servicio
 * Pegue las credenciales en el nodo de Node-Red
 *	Arrastre el nodo de **Debug** y configurelo para ver el objeto `msg.features`

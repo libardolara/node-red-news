@@ -14,6 +14,12 @@ En IBM Cloud es muy sencillo crear un ambiente Node-RED que pueda acceder a los 
 
 * [Watson](https://www.ibm.com/watson/developer/): Watson en IBM Cloud permite integrar herramientas de AI en tu aplicación y guardar, entrenar y manejar tu data en una nube segura.
 
+# Ver los videos
+Este repositorio cubre los videos del 9 y 10 del siguiente listado
+
+
+[![](https://img.youtube.com/vi/XW5yl4RnOT4/0.jpg)](https://www.youtube.com/watch?v=XW5yl4RnOT4&list=PLSMvxXwhRqaHPE5scGCepRQPUGVlwxXfV&index=9)
+
 # Paso a Paso
 
 ### 1. Crear el servicio Node-RED
